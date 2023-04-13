@@ -1,0 +1,27 @@
+// Move X days forward or back
+
+defineVariable(int, _day);
+defineVariable(int, _year);
+defineVariable(int, _continue_looping);
+
+defineFunction(move_days, void, int:_day_offset)
+{
+    Date_GetCurrentDate_D365Y(_day, _year);
+    _day = _day + _day_offset;
+    _continue_looping = 1;
+    while(_continue_looping) {
+        if (_day < 0) {
+            _year = _year - 1;
+            _day = _day + 365;
+        }
+        else if (_day > 364) {
+            _year = _year + 1;
+            _day = _day - 365;
+        }
+        else () {
+            _continue_looping = 0;
+        }
+    }
+    Date_SetCurrentDate_D365Y(_day, _year);
+	returnVoid();
+}

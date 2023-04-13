@@ -1,0 +1,10 @@
+include("core/SOVIETInstructions.txt");
+include("core/move_days.txt");
+
+defineFunction(main, void)
+{
+	InitConstants();
+    move_days(-1);
+
+    end();
+}
